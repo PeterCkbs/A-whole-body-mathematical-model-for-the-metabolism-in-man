@@ -1,1 +1,1 @@
-# A-whole-body-mathematical-model-for-themetabolism-in-man
+# A-whole-body-mathematical-model-for-the-metabolism-in-man
