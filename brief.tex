@@ -89,12 +89,12 @@ In order to stipulate a whole-body metabolic model, we need to view the model fr
 
 %If you want a good model, you need a lot of domain specific knowledge.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\columnwidth]{Diagrams/Qualitative whole body.png}
-    \caption{Qualitative whole-body model}
-    \label{fig:whole-body}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\columnwidth]{Diagrams/Qualitative whole body.png}
+%     \caption{Qualitative whole-body model}
+%     \label{fig:whole-body}
+% \end{figure}
 
 
 
@@ -568,7 +568,7 @@ We now simulate the model in MATLAB. Initially we present the model with a singl
 
 \begin{figure}[H]
     \centering
-    \includegraphics[trim=35 10 35 0, clip,width=\columnwidth, height=0.3\textheight]{Diagrams/Fasting/liver_metabolites.eps}
+    \includegraphics[trim=35 10 35 0, width=\columnwidth]{Diagrams/Fasting/liver_metabolites.eps}
     \caption{Metabolite concentrations in the liver after an initial meal of 60g glucose, 24g protein and 16g fat and an accompanying fast for 72 hours, in the model.}
     \label{fig:Liver_metabolites}
 \end{figure}
@@ -588,19 +588,20 @@ While it is important to keep in mind that these simulation results are not phys
      \begin{subfigure}{1\columnwidth}
          \centering
          \caption{}
-         \includegraphics[trim=0 0 0 0, clip,width=\columnwidth, height=0.25\textheight, keepaspectratio]{Diagrams/Fasting/Flux/bar_plot_flux.eps}
+         \includegraphics[width=\columnwidth]{Diagrams/Fasting/Flux/bar_plot_flux.eps}
          \label{fig:barplot_glucose}
      \end{subfigure}
      \hfill
      \begin{subfigure}{1\columnwidth}
          \centering
          \caption{}
-         \includegraphics[trim=0 0 0 0, clip,width=\columnwidth, height=0.25\textheight, keepaspectratio]{Diagrams/Fasting/Flux/glucose_flux.eps}
+         \includegraphics[width=\columnwidth]{Diagrams/Fasting/Flux/glucose_flux.eps}
          \label{fig:glucose_flux_plot}
      \end{subfigure}
      \caption[short]{Brain and heart flux, in the model, after an initial meal and accompanying fasting for 72 hours. (a) Shows the cumulative fluxes of the organs. (b) Shows fluxes during the time period with a logarithmic scale on the x-axis.}
     \label{fig:glucose_flux}
 \end{figure}
+
 
 
 % \textbf{TODO}: Vigtigste simulationsresultater: Flux og normale plots til at beskrive fed-fast cycle + noget der kan vise hormonregulering og hvordan den fungerer. Til at vise hormon regulering, skal man vise med og uden hormon regulering i ét plot? 
@@ -619,13 +620,12 @@ We now introduce several meals to the system, to simulate a healthy 25 year old 
 \end{split}
 \end{equation*}
 
+
 \begin{figure}[H]
-    \includegraphics[trim=50 0 50 0, clip,width=\columnwidth, height=0.3\textheight]
-    {Diagrams/Food/liver_plot.eps}
+    \includegraphics[trim=35 10 35 0, width=\columnwidth]{Diagrams/Food/liver_plot.eps}
     \caption{Metabolite concentrations in the liver after regular meals four times a day with five hours in between and then followed by nine hours of fasting during the night. Simulated over 3 days.}
     \label{fig:food_plots_bends_cars}
 \end{figure}
-
 
 
 % \textbf{TODO}: Beskriv food plots
@@ -636,11 +636,11 @@ In figure \ref{fig:food_plots_bends_cars} each spike corresponds to an intake of
 
 \subsection{Specific dieting}
 
-It is possible to suggest different diets, that are effective mathematically. We now present a simulation in which we plot for 14 days, with food intake regularly for 1 day, with 4 meals a day, followed by 9 hours of rest and 24 hours of fasting, resulting in intermittent 24 hour fasting. 
+It is possible to suggest different diets, that are effective mathematically. We now present a simulation in which we plot for 13 days, with food intake regularly for 1 day, with 4 meals a day, followed by 9 hours of rest and 24 hours of fasting, resulting in intermittent 24 hour fasting. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[trim=75 10 75 0, clip,width=\columnwidth, height=0.30\textheight]{Diagrams/Food/metabolites_14_days_no_food_33_hours.eps}
+    \includegraphics[trim=40 10 40 0, width=\columnwidth] {Diagrams/Food/metabolites_13_days_no_food_33_hours.eps}
     \caption{Storage and fat metabolites during 24 hour intermittent fasting}
     \label{fig:my_label}
 \end{figure}
