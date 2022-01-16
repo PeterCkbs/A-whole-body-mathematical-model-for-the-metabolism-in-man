@@ -6,7 +6,6 @@
 \usepackage{textcomp}
 
 %Tilføjet packages udover skabelon
-\usepackage{graphicx}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{pdfpages}
 \usepackage{svg}
@@ -29,6 +28,7 @@
 \usepackage{titlesec}
 
 
+
 \usepackage{diagbox}
 
 %%%TEST%%%   
@@ -43,7 +43,6 @@
 
 \captionsetup{font=small,labelfont=small, labelfont = bf}
 
-%\captionsetup[figure]{font=footnotesize,labelfont=footnotesize, labelfont = bf}
 \begin{document}
 
 \title{A whole-body multi-scale mathematical model for dynamic simulation of the metabolism in man}
@@ -67,19 +66,6 @@ Mathematical modeling, metabolism, systems biology, cyber-medical systems, multi
 \label{sec:introduction}
 
 
-
-
-
-%Behovet for denne type model
-%Complex mathematical models exist in today's literature to describe the metabolic reactions in man, although a simple and intuitive framework, in which these advanced mathematical equations can easily be incorporated is not readily available. This type of modelling is specifically useful in PK-PD drug development, such as enzyme inhibitors/activators or hormonal effects. \\ 
-
-
-
-%An almost infinite number of reactions happens in the body constantly, many more than ourselves or others include in their models 
-
-%An extreme number of reactions happen in the body. Modeling all reactions mathematically is a challenging task \cite{dash_li_kim_saidel_cabrera_2008,panunzi_pompa_borri_piemonte_gaetano_2020, sorensen_1978, yasemi_jolicoeur_2021}. To model these reactions in a physiologically relevant setting, requires us to look at the system as a whole-body model. A key benefit to looking at the system of metabolic reactions as a whole-body model, is that it allows us to simulate important metabolic concentrations throughout different compartments (organs) under various conditions. The system being affected by various metabolic concentrations of the different organs, such that homeostasis is attempted for all organs, and not just a single compartment. \\
-
-
 An extreme number of reactions happens in the body, where the formation and breakdown of new metabolites constantly happen to accommodate the different stages that the human body can be in. This metabolism is diverse, and not two people have the same pharmacokinetical parameters, which poses a challenge in PKPD drug development. However, this issue can be met using complex mathematical equations and parameters, that are fitted to a general population. Doing so, can provide an expected concentration of a metabolite in a single organ. It is necessary to realize that not two organs are the same, and such we need to be organ specific in our reactions. To model these reactions in a physiologically relevant setting, requires us to look at the system as a whole-body model. A key benefit to looking at the system of metabolic reactions as a whole-body model, is that it allows us to simulate important metabolic concentrations throughout different compartments (organs) under various conditions. Complex mathematical models exist in today's literature  that describes the metabolic reactions in man\cite{dash_li_kim_saidel_cabrera_2008,panunzi_pompa_borri_piemonte_gaetano_2020, sorensen_1978, yasemi_jolicoeur_2021}, although a simple and intuitive framework, in which these advanced mathematical equations can easily be incorporated is not readily available.
 
 
@@ -87,37 +73,14 @@ In order to stipulate a whole-body metabolic model, we need to view the model fr
 
 
 
-%If you want a good model, you need a lot of domain specific knowledge.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.8\columnwidth]{Diagrams/Qualitative whole body.png}
-%     \caption{Qualitative whole-body model}
-%     \label{fig:whole-body}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{Diagrams/Qualitative whole body.png}
+    \caption{Qualitative whole-body model}
+    \label{fig:whole-body}
+\end{figure}
 
-
-
-
-
-%Skal denne liste egentlig med? Eller er det måske bare nok med den kvalitative model..
-
-% The following metabolic pathways are considered the most important reactions when looking at metabolism in man \cite{miesfeld_mcevoy_2017}.
-% \begin{itemize}
-%     \item Glycolysis
-%     \item Gluconeogenesis
-%     \item Glycogenesis and glycogenolysis
-%     \item Lipolysis and lipid synthesis
-%     \item Transaminase and protein metabolism
-%     \item $\beta$ Oxidation and fatty acid synthesis
-%     \item Ketogenesis
-%     \item Lactate fermentation \& synthesis
-%     \item Pyruvate oxidation
-%     \item TCA cycle
-%     \item Oxidative phosphorylation
-% \end{itemize}
-
-% \textbf{TODO}: Skriv noget mere her, herunder beskrive at vi fremlægger en generel metode til at modellere whole-body metabolisme, hvor man selv kan vælge hvad der skal med i modellen, herunder forklare at hele modellen egentlig kun består i at udfylde r-vektorerne.
 
 
 
@@ -130,8 +93,6 @@ In these compartments, many different types of cells are present, and in each of
     \label{fig:Qualitative_cell}
 \end{figure}
 
-% \textbf{TODO}: Beskriv qualititative model
-
 Many reactions are simplified, such that multiple reactions occurs in a single arrow, i.e. glycolysis. It is this qualitative cell-model that we attempt to model in a whole-body simulation to showcase our approach. While it is not the results itself that are interesting, the framework and flexibility of the model is. \\
 
 As we include lipid and protein storage, we can look at the 4 different stages from fed to starvation: 1) postpandrial, 2) postabsorptive, 3) fasting, and 4) starvation. We note that the the metabolite concentrations qualitatively drastically differ in each of these stages. The postprandial phase is generally characterized by a high insulin-to-glucagon ratio, which stimulates the uptake and storage pathways found in liver, muscle and adipose tissue. The post-absorptive state is a catabolic state, in which glycogenolysis and gluconeogenesis is favoured in the liver to maintain blood glucose levels. In this postabsorptive stage we expect to see a stable glucose concentration, with reducing glycogen concentrations \cite{gropper_smith_carr_2018}, due to the post-absorptive metabolism being characterized by a higher glucagon-to-insulin ratio. Fasting is generally defined as 18 to 48 hours after consuming a meal. In this fasting stage, blood glucose concentration begins to fall slowly, as glycogen stores are further depleted, and gluconeogenesis cannot keep the glucose levels constant by itself. The glucagon-to-insulin ratio further increases, facilitating gluconeogenesis. Additionally, amino acid levels are increased as the breakdown of muscle proteins is further facilitated for use in gluconeogenesis. The lipolysis in adipose tissue intensifies to provide fatty acids for fuel and glycerol for gluconeogenesis. When fasting increases beyond 48 hours, it is characterized as starvation. A major shift in metabolic fuels occurs, as the body tries to preserve proteins. Lipolysis rates accelerates, and fatty acids are the main source of energy in most tissues. As the brain can’t utilize fatty acids, ketone bodie formation is substantially increased in the liver. This becomes the main fuel for the brain, as well as being utilized by heart and skeletal muscle for energy. 
@@ -143,7 +104,6 @@ Prior to presenting our model, we will first show an example of the mathematical
 \section{Mathematical model}
 \label{sec:mathmaticalmodel}
 
-% \textbf{TODO}: Beskriv hvad der foregår
 
 The general model can be thought of as a system in which something flows in, its contents get changed, and flows out, defined by the general differential equation
 
@@ -174,46 +134,6 @@ With the reaction kinetics r, defined as a function of the concentration of each
 \end{equation}
 
 
-
-% \begin{subequations}
-% \begin{align}
-%     r &= r(c) 
-% \\  R &= (T S)' T r 
-% \\    \frac{dc}{dt} &= \frac{Q}{V} M \left( c_{in} - c \right) + R
-% \end{align}
-% \end{subequations}
-
-
-% Model for each organ
-% \begin{equation}
-%     V \frac{dc}{dt} = Q (c_{in}-c) + J V
-% \end{equation}
-% c: blood concentration and only metabolites in blood
-
-% \begin{align}
-%     & V \frac{dC_e}{dt} = J V +  R_e V \\
-%     & V \frac{d C_i}{dt} = R_i V
-% \end{align}
-
-
-% $C_e = c$: gives $J$ and
-% \begin{align}
-%     & V \frac{dc}{dt} = Q (c_{in} - c) + R_e V \\
-%     & V \frac{dC_i}{dt} = R_i V
-% \end{align}
-
-
-% \begin{equation}
-%     R = \begin{bmatrix} R_e \\ R_i \end{bmatrix} = 
-%     \begin{bmatrix} S_e' \\ S_i'\end{bmatrix} r = S' r
-% \end{equation}
-
-% \begin{equation}
-% C = [C_e; C_i] = [c; C_i]
-% \end{equation}
-
-%\textbf{TODO}: Notation og illustration af vores model princip er vigtigt. a) single compartment organ, b) two-compartment organ, c) Reactions in cells of organs, d) mass balances, e) stoichiometry and production rates (reaction rates), f) kinetics (enzyme kinetics)
-
 \subsection{Example model}
 
 We now present an example of the model's method and logic, in a simple three compartment model (\textit{k}) with six metabolites (\textit{i}) and six reactions (\textit{j}), resulting in 3 differential equations and stoichiometric matrix 6 by 6. We call this the example model. This results in the following sets:
@@ -234,8 +154,6 @@ j \in J & =  r_1, r_2, r_3, r_4, r_5, r_6
 The blood circulation can be split into two parts, the arteries (red) and the veins (blue). The total blood flow, Q, is at all times preserved, and the local blood flow can be calculated using mixers and splitters. They are either explicitly modelled as organs, or implicitly as shown by the triangle (splitter) or square (mixer). A splitter divides the blood flow: $a_1 = a_2 + a_3$, and a mixer combines: $v_2+v_3 = v_1$. The same is true for organs. From the flow diagram, the L-compartment is a mixer so: $v_4+a_2 = v_2$ and the G-compartment is a splitter so: $a_3 = v_4+v_3$. As blood flow is preserved, the flow coming into the H-compartment is the same as the flow coming out of the \textit{H}-compartment. \\
 
 The differential equations describing the mass conservation for each organ are all in the form \eqref{eq:general_eq}.
-%When translating to differential equations, each organ is described similarly to (\ref{eq:general_eq}).
-% For clarity, we attribute each flow a from and to subscript. This allows us to describe figure \ref{fig:example_flow} by 3 differential equations that describe the mass balance. \\
 
 \begin{subequations}
 \begin{align}
@@ -279,18 +197,12 @@ The reactions occurring inside the each of the compartments in Fig. \ref{fig:exa
 \setlength\extrarowheight{0pt}
 
 $r$ is a reaction rate, that depends on the concentration $C$ and a scalar $p$.
-% $r$: reaction rate,
-% $p$: scalar. \\
+
 
 
 
 To calculate R$_k$ in the three equations, the stoichiometric matrix is defined based on table \ref{tab:example_stoichio_table}  \\
 
-
-%\textbf{TODO}: Further description of example
-
-
-% \textbf{TODO}: Find en god måde at referere til "Modelling Cell Metabolism: A Review on Constraint-Based Steady-State and Kinetic Approaches" \cite{yasemi_jolicoeur_2021}
 
 
 \begin{equation}
@@ -311,7 +223,6 @@ r_6 & 0  & 0  & 0  & -1 & 1 & 0 \\
 \end{blockarray}
 \end{equation}
 
-%Where each row describes which reactions take place, 
 
 Where each row contains the stoichiometric coefficients of each reaction, in each compartment described by the columns. To find the changes in concentrations in each compartment we must define a compartment specific matrix, that defines which reactions happens in each cell. To do this we use $T_k$. In this example we define $T_H$ in the \textit{H}-compartment where only universal reactions 1, 2 and 6 occurs.
 
@@ -330,17 +241,8 @@ In doing so we can then find the changes in the production rate of the \textit{H
  
 \begin{equation}
     R_H =  (T_HS)'T_Hr_H 
-    %    = \begin{bmatrix}
-    %     -r_1 + r_6 \\
-    %     r_1 - r_6 \\
-    %     -r_6 \\
-    %     -r_1 + r_2 \\
-    %     -r_2 \\
-    %     0
-    % \end{bmatrix}
 \end{equation}
 
-%The metabolic pathways in our example is illustrated in figure \ref{fig:example_metabolic_map}.
 
 \begin{figure}[H]
     \centering
@@ -356,12 +258,10 @@ While cell-permeability is not included in this example, it could be represented
 
 
 
-%\vfill\eject
 \newpage
 \subsection{Model}
 
-% \textbf{TODO}: Måske lidt mere introduktions tekst her? fx sige at vi har brugt den fremlagte metode til at udforme netop denne model.
-% Formål med denne model?
+
 
 We now present a model containing 7 compartments and 16 metabolites split into 31 reactions including hormonal effect from the two signal molecules, insulin and glucagon, on specific tissues. We create the model using the same methodology as described earlier. The purpose is to describe the energy metabolism of the three macronutrients protein, carbohydrates and lipids. We include the major biochemical pathways which these macronutrients are a part of, in order to simulate their behaviour under various conditions. The two hormones are included to add stability and avoid large transient periods in the simulation after intake of food, as insulin and glucagon are important anabolic and catabolic hormones respectively. \\
 
@@ -406,9 +306,6 @@ Table \ref{tab:summary_pathways} summarizes what reactions are included in what 
 \subsection{Inclusion of a hormonal model}
 \label{sec:hormonal_model}
 
-% \textbf{TODO}: Omskrives fra bachelor \\
-
-% \textbf{TODO}: Læs igennem og ret 
 
 Different implementations of hormonal models are possible and available, however Sorensen \cite{sorensen_1978} employs a very simple Glucagon model that describes pancreatic glucagon release. Sorensen found that the glucagon release and clearance could be described adequately by a one compartment model. Sorensen also formulated an insulin model described by a six compartment model. The models are a product of comparing literature and experimental data.
 While it is possible to include the glucagon model as a single compartment model and insulin in a 6 compartment model, similar to \cite{panunzi_pompa_borri_piemonte_gaetano_2020,sorensen_1978}, it would be best practice to include insulin and glucagon in a whole-body 7 compartment model, to ensure a single methodology. Insulin and glucagon are therefore included in the stoichiometric matrix as metabolites in order to calculate their production rates. \\
@@ -416,7 +313,6 @@ While it is possible to include the glucagon model as a single compartment model
 To represent the effect that the hormones insulin and glucagon have on organ specific reactions, we now list a table containing which reactions are affected by insulin and glucagon, as well as in which organ. \\
 
 
-%\begin{tabular}[c]{}{} Liver, muscle tissue \\ adipose tissue \end{tabular}
 \setlength\extrarowheight{2pt}
 \begin{table}[H]
 \centering
@@ -451,11 +347,7 @@ $\Uparrow$, symbolizes increased stimulation, $\Downarrow$, symbolizes decreased
 \end{table}
 \setlength\extrarowheight{0pt}
 
-% Similar models, \cite{dash_li_kim_saidel_cabrera_2008,sorensen_1978,panunzi_pompa_borri_piemonte_gaetano_2020}, has had actual data to parameter-estimate over, allowing an increased complexity, to utilize functions similar to 
-% \begin{equation}
-%     \mu_1 + \mu_2\cdot tanh\left(\mu_3\cdot\left(\frac{I}{I^B} - \mu_4\right)\right)
-% \end{equation}
-% Where a total of four $\mu$ parameters needs to be parameter-estimated. $B$ indicates steady-state value. 
+
 
 While the qualitative effect of insulin and glucagon is known, explicitly in table \ref{tab:insulin_glucagon_reactions}, the mathematical impact that insulin and glucagon has, is not necessarily known. We only know, from literature, which enzymes and hence reactions they have an effect on. We use a simple function where, given the reciprocal effects of insulin and glucagon, the ratio between these two hormones allows us to determine whether or not they have an effect on the system. These functions alter the production rates of the reactions in table \ref{tab:insulin_glucagon_reactions}:
 \begin{equation}
@@ -475,11 +367,10 @@ And if both insulin and glucagon have an effect on the same reaction (though opp
 Where $j$ is the reaction, fx GLC$\rightarrow$G6P, $k$ is the compartment and the superscript $B$ indicates the basal-value. These simple functions are equal to 1 at steady state, which occurs when blood glucose is at 5mM, which means that no matter the value of $\mu$, the effect is not present at steady-state. This is a very important property, since many of the parameters used in the reactions are estimated based on metabolite homeostasis. \\
 
 
-%have the property of being equal to 1, no matter the size of $\mu$. if the insulin and glucagon ratios are equal to 1, which they are at steady state when blood glucose = 5mM. This is a very important property, since many of the parameters used in the reactions are estimated based on metabolite homeostasis. \\
+
 
 \subsection{Inclusion of a modified SIMO-model}  
 
-% \textbf{TODO}: Læs igennem og ret 
 
 A modified version of the Simple Interdependent glucose/insulin MOdel, SIMO, \cite{panunzi_pompa_borri_piemonte_gaetano_2020} is used to include the uptake of glucose, amino acids and fats from ones diet. The rates are the same for all macronutrients, which is not physiologically true, as these macronutrients differ in terms of absorption given their molecular differences, but in lack of data or other mathematical models describing this issue, the SIMO model is the best and simplest choice. \\
 
@@ -490,31 +381,7 @@ A modified version of the Simple Interdependent glucose/insulin MOdel, SIMO, \ci
     \label{fig:simo}
 \end{figure}
 
-% In the equations used in the model the compartments S, J, R and L are all 3x1 vectors: \\
-% \begin{equation}
-%     \begin{split}
-%         \dot{S}  = \begin{bmatrix}
-%               S_{GLC} \\
-%               S_{AA} \\
-%               S_{TGL}
-%              \end{bmatrix},
-%              \dot{J}  = \begin{bmatrix}
-%               J_{GLC} \\
-%               J_{AA} \\
-%               J_{TGL}
-%              \end{bmatrix} \\
-%              \dot{R}  = \begin{bmatrix}
-%               R_{GLC} \\
-%               R_{AA} \\
-%               R_{TGL}
-%              \end{bmatrix},
-%              \dot{L}  = \begin{bmatrix}
-%               L_{GLC} \\
-%               L_{AA} \\
-%               L_{TGL}
-%              \end{bmatrix}
-%     \end{split}
-% \end{equation}
+
 
 The resulting uptake of nutrients is represented by the equation:
 \begin{equation}
@@ -537,14 +404,6 @@ It is then included in the model as the parameters:
 The modified SIMO model is included as additional inputs in the differential equations and not directly into the production rate vector R. This is done as the SIMO model provides external inputs from meal consumption and thought of as an extension to the general methodology.
 
 
-% To summarize \\
-% $G_{r_{oga}}$ transports glucose and aminoacids to the gut\\
-% $MP_{r_{oga}}$ transports triglycerides to muscle tissue \\
-% $AP_{r_{oga}}$ transports triglycerides to adipose tissue \\
-
-
-%\textbf{TODO}: Beskriv at det naturligvis ikke er retfærdigt at optagelsesraterne er ens for GLC, AA og TGL
-
 
 
 
@@ -558,11 +417,6 @@ In section II.B through section II.D all constitute to create a single larger mo
 We now simulate the model in MATLAB. Initially we present the model with a single initial meal ingested at steady-state, and following the development of metabolites as the 25 year old in silico patient refrains from eating or doing physical activity for the next 72 hours. \\
 
 
-%Indsæt simulerings resultater
-% \textbf{TODO}: Disse simulerings resultater bør køres med Fed/Fast stages. Samt skal y-aksen gøres nice og muligvis udelade nogle af dem. Glycogen er vigtig at have med.
-
-
-% \textbf{TODO}: Beskriv 4 forskellige stadier
 
 
 
@@ -581,7 +435,6 @@ brain, as well as being utilized by heart and skeletal muscle.\\
 While it is important to keep in mind that these simulation results are not physiologically accurate for all metabolites, we can plot the fluxes in order to help us highlight the dynamics.
 
 
-% \textbf{TODO:} Why are flux plots interesting to simulate / hvad er det vi ser / beskrivelse af hver organs rolle, ie. lever producerer hjerne forbruger
 
 \begin{figure}[H]
      \centering
@@ -603,8 +456,6 @@ While it is important to keep in mind that these simulation results are not phys
 \end{figure}
 
 
-
-% \textbf{TODO}: Vigtigste simulationsresultater: Flux og normale plots til at beskrive fed-fast cycle + noget der kan vise hormonregulering og hvordan den fungerer. Til at vise hormon regulering, skal man vise med og uden hormon regulering i ét plot? 
 
 We see that in figure \ref{fig:glucose_flux}a, the brain is a major consumer of glucose, and the liver is a major exporter of glucose  \cite{miesfeld_mcevoy_2017}. The sum shows the net flux of glucose in all organs, resulting in an overall consumption corresponding to a meal containing 60g glucose. Quite interestingly figure \ref{fig:glucose_flux}b shows which organs are the consumers of glucose over log time. There is a large drop initially for the glucose flux in liver and muscle tissue as food is ingested and the blood glucose concentration is high. This is especially seen in the insulin stimulated tissues, as the effect described in table \ref{tab:insulin_glucagon_reactions} shows an increase in glucose uptake as a result of high concentrations of insulin. As the blood glucose concentration reduces, the liver again starts producing glucose for the other organs in order to keep homeostasis and thus increasing its flux to a positive value.
 
@@ -628,7 +479,6 @@ We now introduce several meals to the system, to simulate a healthy 25 year old 
 \end{figure}
 
 
-% \textbf{TODO}: Beskriv food plots
 
 
 In figure \ref{fig:food_plots_bends_cars} each spike corresponds to an intake of food, and we see that eating 4-5 times a day maintains a favourable concentration but with larger spikes. Simulating with smaller meals with increased frequency gives smaller spikes and therefore a more stable concentration for glucose and other metabolites over time \cite{derendorf_schmidt_rowland_tozer_2020}. Looking at the SIMO-model, the concentration of macronutrients in the stomach and ileum is almost depleted. If the food intake is reduced to smaller meals every 2 hours, with a 9 hour break to simulate sleep, a more consistent glucose concentration is seen, as the stomach concentration does not go towards 0, but rather attempts to stabilize and therefore can create a scenario more similar to a constant infusion of food, thus reducing the size of the spikes. The metabolites TGL, GLR and FFA are mostly stable during regular food intake, however, they fall after food intake, as a result of an increase in insulin. This results in increased TGL uptake in adipose tissue as well as increased lipid droplet formation.
@@ -651,19 +501,11 @@ During this intermittent fasting, we expect to see a reduction in the lipid drop
 
 \subsection{Assumptions \& Drawbacks}
 
-% \textbf{TODO}: Hvilke assumptions laver vi for at få modellen til at kunne køre. Skrives rent. \\
-% Flere assumptions der måske skal beskrives: Er de metabolitter vi har valgt tilstrækkelige eller for komplekse? Er det nok bare med en form for kinetik? 
-
-% Coenzymer, NADH, NAD+, ATP, ADP er ikke medtaget
-
-% Insulin Glucagon model påvirkning er OK nok til at modellere systemet? Er det nok med to signalstoffer? \\
 
 
 Assumption: Diffusion across cell membranes happens infinitely fast, as the time it takes for the cell to be in equilibrium with the blood vessels happens, at a much faster timescale compared to the timescale of our model. This assumption makes it possible to include organs as one compartment. If transporters and diffusion were to be incorporated in the model, it would be expected to divide the compartments in two, so that transporters could be explicitly modeled.\\
 
 Assumption: The concentration is the same across the entire cell. We model each organ as a well-stirred tank, so every metabolite is uniformly distributed in the organs. It is known that the enzymatic reactions in each cell and organ happens at a rapid timescale of $10^{-3} \text{ to } 10^0$ seconds \cite{yasemi_jolicoeur_2021}. Given the models timescale of hours, up to several days, it can be assumed that the enzymatic reactions happen at a uniform rate across the spatial organs, allowing a simplification of complex enzymatic reactions to be reduced to Michaelis-Menten kinetics. \\
-
-% \textbf{TODO}: Omskrive nedenstående afsnit som "additional work" istedet. \\
 
 
 
@@ -673,8 +515,6 @@ Something that would be interesting to incorporate into the model, is the energy
 
 \section{Conclusion}
 \label{sec:conclusion}
-% \textbf{TODO}: Skal der noget angående vores eksempel med i konklusionen? \\
-% \textbf{TODO}: Mere fokus på metoden istedet for at fokusere på netop den model vi valgte at lave udfra metoden! \\
 
 
 Through linear algebra and differential equations, we have stated a model that is capable of simulating the complex human metabolism. Our method makes it simple to expand the system to whatever one would like to model, through changes in the stoichiometric matrix that matches the chemistry. Using this approach, the core of the model is simply which parameters and reaction kinetics are used in the production vector R$_k$. This is illustrated in our expanded system, which involves 16 metabolites and 2 hormones in 7 organs. This results in a total of 126 differential equations. The complex system can be written as only 7 differential equations, one for each organ, as the entire reaction network is included in the production rate vector R. \\
@@ -684,12 +524,6 @@ As shown, the model framework can easily be expanded to incorporate complex meta
 The modelling objective was to create the basis for a physiological whole-body model that can incorporate cellular metabolic processes, and as such we hope that this article can give some insight as to how the complex systems in the human body can be explained quantitatively.
 
 
-
-% By applying knowledge from Sorensen \cite{sorensen_1978} onto the model which have drawn much inspiration from Kim Cabreras muscle model \cite{dash_li_kim_saidel_cabrera_2008} and biological text books \cite{gropper_smith_carr_2018, miesfeld_mcevoy_2017, vanputte_regan_russo_2019}, we were able to stipulate a model which had many elements of the complex human metabolism. 
-
-% The purpose of this model, was not to stipulate a model which could 
-
-% The purpose of the model was from the start clear, we could not achieve high levels of physiological relevance with limited data, but we were able to formulate a model to quantitatively simulate the biochemical processes in man based on qualitative research.\\
 
 \printbibliography
 
@@ -711,7 +545,7 @@ The modelling objective was to create the basis for a physiological whole-body m
 
 \begin{table}[H]
 \centering
-\resizebox{0.8\textwidth}{!}{%
+\resizebox{0.7\textwidth}{!}{%
 \begin{tabular}{rllrl}
 {  \textbf{Variables}} &                 &  & {  \textbf{Subscript}} &               \\
 \textbf{C:}    & Metabolite Concentration ($\frac{mmol}{L}$)    &  & \textbf{B:}               & Brain  \\
@@ -783,11 +617,10 @@ GLC\rightarrow G6P, G6P\rightarrow GLC \ldots TGL_{AP} \rightarrow 3FFA + GLR
 \end{align*}
 
 
-The parameter M is a distribution matrix and only contains zeros and ones in the diagonal. It makes sure that only the circulating metabolites are used in the mass balance part of the equations. \\
+The parameter M is a distribution matrix and only contains zeros and ones in the diagonal. It makes sure that only the circulating metabolites are used in the mass balance part of the equations. The parameter $r_{oga}$ connects the SIMO sub model with the main model and describes the uptake of nutrients after ingestion of food. 
 
-The parameter $r_{oga}$ connects the SIMO sub model with the main model and describes the uptake of nutrients after ingestion of food.
-\subsection{Kinetic parameters can be found on}
-\url{http://github.com/PeterCkbs/A-whole-body-mathematical-model-for-the-metabolism-in-man}
+
+\onecolumn
 \subsection{Kinetic equations in tissue k}
 
     
@@ -884,50 +717,61 @@ The parameter $r_{oga}$ connects the SIMO sub model with the main model and desc
 
 \renewcommand{\arraystretch}{1}
 
-% \begin{table}[H]
-% \huge
-% \centering
-% \caption{Stoichiometric matrix}
-% \resizebox{\textwidth}{!}{%
-% \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-% \cline{2-19}
-%                                                       & GLC & G6P & GLY & GA3P & PYR & ACoA & OXA & CIT & LAC & AA & FFA & TGL & GLR & KET & PRO & TGL$_{AP}$ & INS & GLU \\ \hline
-% \multicolumn{1}{|l|}{$GLC \xrightarrow[]{} G6P$}      & -1  & 1   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$G6P \xrightarrow[]{} GLC$}      & 1   & -1  & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$G6P \xrightarrow[]{} GA3P$}     & 0   & -1  & 0   & 2    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$GA3P \xrightarrow[]{} G6P$}     & 0   & 1   & 0   & -2   & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$G6P \xrightarrow[]{} GLY$}      & 0   & -1  & 1   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$GLY\xrightarrow[]{} G6P$}       & 0   & 1   & -1  & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$GA3P \xrightarrow[]{} PYR$}     & 0   & 0   & 0   & -1   & 1   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$PYR \xrightarrow[]{} GA3P$}     & 0   & 0   & 0   & 1    & -1  & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$PYR \xrightarrow[]{} LAC$}      & 0   & 0   & 0   & 0    & -1  & 0    & 0   & 0   & 1   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$LAC \xrightarrow[]{} LAC$}      & 0   & 0   & 0   & 0    & 1   & 0    & 0   & 0   & -1  & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$PYR \xrightarrow[]{} AA$}       & 0   & 0   & 0   & 0    & -1  & 0    & 0   & 0   & 0   & 1  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$AA \xrightarrow[]{} PYR$}       & 0   & 0   & 0   & 0    & 1   & 0    & 0   & 0   & 0   & -1 & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$PYR \xrightarrow[]{} ACoA$}     & 0   & 0   & 0   & 0    & -1  & 1    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$ACoA,OXA \xrightarrow[]{} CIT$} & 0   & 0   & 0   & 0    & 0   & -1   & -1  & 1   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$CIT \xrightarrow[]{} OXA$}      & 0   & 0   & 0   & 0    & 0   & 0    & 1   & -1  & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$OXA \xrightarrow[]{} PYR$}      & 0   & 0   & 0   & 0    & 1   & 0    & -1  & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$PYR \xrightarrow[]{} OXA$}      & 0   & 0   & 0   & 0    & -1  & 0    & 1   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$GA3P \xrightarrow[]{} GLR$}     & 0   & 0   & 0   & -1   & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 1   & 0   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$GLR \xrightarrow[]{} GA3P$}     & 0   & 0   & 0   & 1    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & -1  & 0   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$GLR,FFA \xrightarrow[]{} TGL$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & -3  & 1   & -1  & 0   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$TGL \xrightarrow[]{} GLR,FFA$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 3   & -1  & 1   & 0   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$FFA \xrightarrow[]{} ACoA$}     & 0   & 0   & 0   & 0    & 0   & 7    & 0   & 0   & 0   & 0  & -1  & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
-% \multicolumn{1}{|l|}{$ACoA \xrightarrow[]{} FFA$}     & 0   & 0   & 0   & 0    & 0   & -7   & 0   & 0   & 0   & 0  & 1   & 0   & 0   & 0   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$KET \xrightarrow[]{} ACoA$}     & 0   & 0   & 0   & 0    & 0   & 1    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & -1  & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$ACoA \xrightarrow[]{} KET$}     & 0   & 0   & 0   & 0    & 0   & -1   & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 1   & 0 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$AA \xrightarrow[]{} PRO$}       & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & -1 & 0   & 0   & 0   & 0   & 1 & 0  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$PRO \xrightarrow[]{} AA$}       & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 1  & 0   & 0   & 0   & 0   & -1 & 0 & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$GLR,FFA \xrightarrow[]{} TGL_{AP}$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & -3  & 0   & -1  & 0   & 0 & 1  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$TGL_{AP} \xrightarrow[]{} GLR,FFA$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 3   & 0  & 1   & 0   & 0  & -1  & 0 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$\rightarrow INS \rightarrow$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0  & 0   & 0  & 0   & 0 & 0  & 1 & 0 \\ \hline
-% \multicolumn{1}{|l|}{$\rightarrow GLU \rightarrow$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0  & 0   & 0   & 0  & 0  & 0 & 1 \\ \hline
-% \end{tabular}%
-% }
+\begin{table}[H]
+\huge
+\centering
+\caption{Stoichiometric matrix}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\cline{2-19}
+                                                      & GLC & G6P & GLY & GA3P & PYR & ACoA & OXA & CIT & LAC & AA & FFA & TGL & GLR & KET & PRO & TGL$_{AP}$ & INS & GLU \\ \hline
+\multicolumn{1}{|l|}{$GLC \xrightarrow[]{} G6P$}      & -1  & 1   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$G6P \xrightarrow[]{} GLC$}      & 1   & -1  & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$G6P \xrightarrow[]{} GA3P$}     & 0   & -1  & 0   & 2    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$GA3P \xrightarrow[]{} G6P$}     & 0   & 1   & 0   & -2   & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$G6P \xrightarrow[]{} GLY$}      & 0   & -1  & 1   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$GLY\xrightarrow[]{} G6P$}       & 0   & 1   & -1  & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$GA3P \xrightarrow[]{} PYR$}     & 0   & 0   & 0   & -1   & 1   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$PYR \xrightarrow[]{} GA3P$}     & 0   & 0   & 0   & 1    & -1  & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$PYR \xrightarrow[]{} LAC$}      & 0   & 0   & 0   & 0    & -1  & 0    & 0   & 0   & 1   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$LAC \xrightarrow[]{} LAC$}      & 0   & 0   & 0   & 0    & 1   & 0    & 0   & 0   & -1  & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$PYR \xrightarrow[]{} AA$}       & 0   & 0   & 0   & 0    & -1  & 0    & 0   & 0   & 0   & 1  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$AA \xrightarrow[]{} PYR$}       & 0   & 0   & 0   & 0    & 1   & 0    & 0   & 0   & 0   & -1 & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$PYR \xrightarrow[]{} ACoA$}     & 0   & 0   & 0   & 0    & -1  & 1    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$ACoA,OXA \xrightarrow[]{} CIT$} & 0   & 0   & 0   & 0    & 0   & -1   & -1  & 1   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$CIT \xrightarrow[]{} OXA$}      & 0   & 0   & 0   & 0    & 0   & 0    & 1   & -1  & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$OXA \xrightarrow[]{} PYR$}      & 0   & 0   & 0   & 0    & 1   & 0    & -1  & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$PYR \xrightarrow[]{} OXA$}      & 0   & 0   & 0   & 0    & -1  & 0    & 1   & 0   & 0   & 0  & 0   & 0   & 0   & 0   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$GA3P \xrightarrow[]{} GLR$}     & 0   & 0   & 0   & -1   & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & 1   & 0   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$GLR \xrightarrow[]{} GA3P$}     & 0   & 0   & 0   & 1    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0   & -1  & 0   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$GLR,FFA \xrightarrow[]{} TGL$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & -3  & 1   & -1  & 0   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$TGL \xrightarrow[]{} GLR,FFA$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 3   & -1  & 1   & 0   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$FFA \xrightarrow[]{} ACoA$}     & 0   & 0   & 0   & 0    & 0   & 7    & 0   & 0   & 0   & 0  & -1  & 0   & 0   & 0   & 0 & 0 & 0 & 0  \\ \hline
+\multicolumn{1}{|l|}{$ACoA \xrightarrow[]{} FFA$}     & 0   & 0   & 0   & 0    & 0   & -7   & 0   & 0   & 0   & 0  & 1   & 0   & 0   & 0   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$KET \xrightarrow[]{} ACoA$}     & 0   & 0   & 0   & 0    & 0   & 1    & 0   & 0   & 0   & 0  & 0   & 0   & 0   & -1  & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$ACoA \xrightarrow[]{} KET$}     & 0   & 0   & 0   & 0    & 0   & -1   & 0   & 0   & 0   & 0  & 0   & 0   & 0   & 1   & 0 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$AA \xrightarrow[]{} PRO$}       & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & -1 & 0   & 0   & 0   & 0   & 1 & 0  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$PRO \xrightarrow[]{} AA$}       & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 1  & 0   & 0   & 0   & 0   & -1 & 0 & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$GLR,FFA \xrightarrow[]{} TGL_{AP}$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & -3  & 0   & -1  & 0   & 0 & 1  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$TGL_{AP} \xrightarrow[]{} GLR,FFA$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 3   & 0  & 1   & 0   & 0  & -1  & 0 & 0 \\ \hline
+\multicolumn{1}{|l|}{$\rightarrow INS \rightarrow$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0  & 0   & 0  & 0   & 0 & 0  & 1 & 0 \\ \hline
+\multicolumn{1}{|l|}{$\rightarrow GLU \rightarrow$}  & 0   & 0   & 0   & 0    & 0   & 0    & 0   & 0   & 0   & 0  & 0   & 0  & 0   & 0   & 0  & 0  & 0 & 1 \\ \hline
+\end{tabular}%
+}
 
-% \label{tab:stoichiometric_matrix}
-% \end{table}
+\label{tab:stoichiometric_matrix}
+\end{table}
+
+\subsection{Parameter values and initial conditions}
+
+Matlab code can be found on 
+
+\url{https://github.com/PeterCkbs/A-whole-body-mathematical-model-for-the-metabolism-in-man}
+
+\newpage
+
+\twocolumn
 
 
+\input{Supplementary material.tex}
 \end{document}

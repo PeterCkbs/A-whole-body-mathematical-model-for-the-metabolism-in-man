@@ -41,17 +41,3 @@
 #
 # Fifth part: This part is short and precise. It simply summarizes the contents of the remaining sections of the paper. It often starts with a variation of the sentence "The remaining part of this paper is structured as follows."
 
-
-%%%%%%%%%%First part
-An extreme number of reactions constantly happen in the body, to accommodate the 
-
-Modeling all reactions mathematically is a challenging task 
-
-
-%%%%%%%%%% Third part
-Complex mathematical models exist in today's literature \cite{dash_li_kim_saidel_cabrera_2008,panunzi_pompa_borri_piemonte_gaetano_2020, sorensen_1978, yasemi_jolicoeur_2021} to describe the metabolic reactions in man, although a simple and intuitive framework, in which these advanced mathematical equations can easily be incorporated is not readily available. This type of modelling is specifically useful in PK-PD drug development, such as enzyme inhibitors/activators or hormonal drugs. To model these reactions in a physiologically relevant setting, requires us to look at the system as a whole-body model. A key benefit to looking at the system of metabolic reactions as a whole-body model, is that it allows us to simulate important metabolic concentrations throughout different compartments (organs) under various conditions. The system being affected by various metabolic concentrations of the different organs, such that homeostasis is attempted for all organs, and not just a single compartment. \\
-
-
-
-%%% udkast
-An extreme number of reactions happens in the body, where the formation and breakdown of new metabolites constantly happen to accommodate the different stages that the human body can be in. This metabolism is diverse, and not two people have the same pharmacokinetical parameters, which poses a challenge in PKPD drug development. However, this issue can be met using complex mathematical equations and parameters that are fitted to a general population. Doing so, can provide an expected concentration of a single metabolite in a single organ. It is necessary to realize that not two organs are the same, and such we need to be organ specific in our reactions. To model these reactions in a physiologically relevant setting, requires us to look at the system as a whole-body model. A key benefit to looking at the system of metabolic reactions as a whole-body model, is that it allows us to simulate important metabolic concentrations throughout different compartments (organs) under various conditions. Complex mathematical models exist in today's literature \cite{dash_li_kim_saidel_cabrera_2008,panunzi_pompa_borri_piemonte_gaetano_2020, sorensen_1978, yasemi_jolicoeur_2021} that describes the metabolic reactions in man, although a simple and intuitive framework, in which these advanced mathematical equations can easily be incorporated is not readily available. 
